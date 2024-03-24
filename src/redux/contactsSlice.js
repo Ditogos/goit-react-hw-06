@@ -4,20 +4,20 @@ const initContacts = [];
 
 export const contactsSlice = createSlice({
   name: "contacts",
-  initialState: { contacts: initContacts },
+  initialState: { items: initContacts },
   reducers: {
     addContact(state, action) {
-      state.contacts.push(action.payload);
+      state.items.push(action.payload);
     },
     deleteContact(state, action) {
-      const index = state.contacts.findIndex(
+      const index = state.items.findIndex(
         (contact) => contact.id === action.payload
       );
-      state.contacts.splice(index, 1);
+      state.items.splice(index, 1);
     },
   },
 });
 
 export const { addContact, deleteContact } = contactsSlice.actions;
 export const contactsReducer = contactsSlice.reducer;
-export const getContacts = (state) => state.contacts.contacts;
+export const getContacts = (state) => state.contacts.items;
